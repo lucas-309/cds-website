@@ -29,6 +29,14 @@ const projects = [
     // tags: ["hey"]
   },
   {
+    semester: "Fall 2025",
+    title: "LiveDance",
+    description: "LiveDance is a real-time dance coach powered by computer vision. It tracks a user's body pose from a live camera feed and compares it frame-by-frame to a reference dance video, providing corrective feedback to help users match the moves.",
+    imageUrl: "https://opengraph.githubassets.com/1/CornellDataScience/LiveDance",
+    githubLink: "https://github.com/CornellDataScience/LiveDance",
+    presentationLink: "https://docs.google.com/presentation/d/1Cs1tKVWiajUJ8IOrOuyVbK_Yf62rw071_pWDC-P2L1Y/edit?usp=sharing",
+  },
+  {
     semester: "Fall 2024",
     title: "VibeSync",
     description: "VibeSync is a research project which aims to explore the boundary of ML research with music. \
