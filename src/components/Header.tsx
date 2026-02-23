@@ -6,9 +6,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import imdbImg from "../assets/img/imdb.png";
 import logo from "../assets/img/logo.png";
-import vibesyncImg from "../assets/img/vibesync.png";
+import { projects } from "../data/projects";
 // import Loader from './Loader';
 
 import "../assets/css/header.css";
@@ -85,29 +84,7 @@ const Header: React.FC<HeaderProps> = ({ isHome }) => {
     setIsTyping(false);
   };
 
-  // projects
-
-  const projects = [
-    {
-      id: 1,
-      title: "imdb",
-      description:
-        "In-Memory Database (IMDb) is an implementation of the Redis protocol.",
-      img: imdbImg,
-      link: "https://github.com/CornellDataScience/imdb"
-    },
-    {
-      id: 2,
-      title: "VibeSync",
-      description:
-        "VibeSync is a research project which aims to explore the boundary of ML research with music. \
-    Inspired by recent advances with contrastive learning and joint language-audio embeddings, we aim to build \
-    a proof-of-concept system where a user specifies a playlist title and receives recommended songs. We want \
-    to see how far take this and what insights we can gain.",
-      img: vibesyncImg,
-      link: "https://github.com/CornellDataScience/VibeSync"
-    },
-  ];
+  const latestProjects = projects.slice(0, 2);
 
   return (
     <>
@@ -342,19 +319,19 @@ const Header: React.FC<HeaderProps> = ({ isHome }) => {
                 </Link>
               </div>
               <div className="text-4xl mt-10 mb-10 space-y-5 font-light">
-                {/* map projects, max 2 */}
-                {projects.slice(0, 2).map((project) => (
+                {/* map 2 newest projects */}
+                {latestProjects.map((project, index) => (
                   <div
-                    key={project.id}
+                    key={index}
                     className={`group transition-opacity duration-500`}
                   >
                     <p className="text-sm text-gray-300 mb-2 group-hover:text-gray-400">
                       {project.title}
                     </p>
-                    <Link href={project.link} target="_blank" rel="noopener noreferrer">
+                    <Link href={project.githubLink ?? "/projects"} target="_blank" rel="noopener noreferrer">
                       <img
-                        src={project.img.src}
-                        alt="Project Image"
+                        src={typeof project.imageUrl === 'string' ? project.imageUrl : project.imageUrl.src}
+                        alt={project.title}
                         className="w-full h-48 object-cover mb-2 group-hover:opacity-75 transition-opacity duration-300"
                         width={40}
                         height={40}
