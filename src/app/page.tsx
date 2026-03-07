@@ -128,64 +128,44 @@ export default function Home() {
 
   return (
     <>
-
-      <main className="relative w-full min-h-screen flex flex-col justify-end bg-white">
+      <main className="homepage-shell relative w-full min-h-screen flex flex-col justify-end">
         <title>Home | Cornell Data Science</title>
-        <div className="">
-          <Header isHome={isHome} />
-        </div>
-        <div className="hero relative w-full min-h-screen flex flex-col items-center justify-center text-white">
-          {/* darken image filter */}
-          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+        <Header isHome={isHome} />
 
-          {/* Cornell Giving Day Banner
-          <div className="absolute top-[16.67vh] left-0 w-full bg-[#B31B1B] py-4 px-6 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 z-10">
-            <div className="text-xl sm:text-2xl font-semibold">Cornell Giving Day is here!</div>
-            <div className="text-sm sm:text-base">Support Cornell Data Science and help us continue our mission</div>
-            <a
-              href="https://givingday.cornell.edu/campaigns/cornell-data-science"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-[#B31B1B] px-4 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors duration-300"
-            >
-              Donate Now
-            </a>
-          </div> */}
-          <div className="font-light box-mobile absolute bottom-4 right-4 p-4 flex flex-col space-y-2 text-xs md:text-xs sm:text-xs">
-            <div className="flex items-center">
-              <div className="p-2 border-l border-white">
-                <p>HOSTED ON THE CDS COMPUTE CLUSTER</p>
-              </div>
+        <section className="hero hero-stage relative w-full min-h-screen flex flex-col items-center justify-center text-white">
+          <div className="hero-scrim"></div>
+          <div className="hero-grid-overlay"></div>
+          <div className="hero-aurora hero-aurora-one"></div>
+          <div className="hero-aurora hero-aurora-two"></div>
+
+          <div className="hero-status font-light box-mobile absolute bottom-4 right-4 p-4 flex flex-col space-y-2 text-xs md:text-xs sm:text-xs">
+            <div className="hero-status-line">
+              <p>HOSTED ON THE CDS COMPUTE CLUSTER</p>
             </div>
-            <div className="flex items-center">
-              <div className="p-2 border-l border-white">
-                <p>LAST UPDATED: JANUARY 2ND, 2025</p>
-              </div>
+            <div className="hero-status-line">
+              <p>LAST UPDATED: JANUARY 2ND, 2025</p>
             </div>
-            <div className="flex items-center">
-              <div className="p-2 border-l border-white">
-                <p>
-                  THIS ORGANIZATION <br />
-                  IS A REGISTERED STUDENT <br />
-                  ORGANIZATION OF CORNELL UNIVERSITY.
-                </p>
-              </div>
+            <div className="hero-status-line">
+              <p>
+                THIS ORGANIZATION <br />
+                IS A REGISTERED STUDENT <br />
+                ORGANIZATION OF CORNELL UNIVERSITY.
+              </p>
             </div>
-            <div className="flex items-center">
-              <div className="p-2 border-l border-white">
-                <p>
-                  COPYRIGHT © 2024 <br />
-                  CORNELL DATA SCIENCE <br />
-                  PROJECT TEAM. <br />
-                </p>
-              </div>
+            <div className="hero-status-line">
+              <p>
+                COPYRIGHT © 2026 <br />
+                CORNELL DATA SCIENCE <br />
+                PROJECT TEAM. <br />
+              </p>
             </div>
           </div>
-          <div className="absolute bottom-4 left-4 p-4 m-0 flex items-center space-x-2 pl-0">
+
+          <div className="absolute bottom-4 left-4 p-4 m-0 flex items-end space-x-3 pl-0">
             <img
               src={whiteLogo.src}
               alt="Logo"
-              className="h-28 sm:h-24 md:h-32 lg:h-[15rem] blink-in-once"
+              className="hero-mark h-28 sm:h-24 md:h-32 lg:h-[15rem] blink-in-once"
             />
             <div className="hero-text text-xs sm:text-lg lg:text-4xl">
               <span className="letter">C</span>
@@ -193,19 +173,25 @@ export default function Home() {
               <span className="letter">S</span>
             </div>
           </div>
-        </div>
+        </section>
 
-        <section className="w-full flex flex-col p-6 sm:p-24 bg-white">
-          <div className="mb-8">
-            <h2 className="text-center text-4xl sm:text-6xl font-light text-gray-800 mb-4">Our Partners</h2>
-            <p className="text-center text-xl text-gray-600 max-w-2xl mx-auto">Proud to collaborate with industry leaders who support our mission</p>
+        <section className="partner-section w-full flex flex-col p-6 sm:p-20 fade-in">
+          <div className="partner-header mb-8">
+            <h2 className="text-center text-4xl sm:text-6xl font-light mb-4">Our Partners</h2>
+            <p className="text-center text-xl max-w-2xl mx-auto">
+              Proud to collaborate with industry leaders who support our mission
+            </p>
           </div>
-          <div className="rounded-2xl p-8 backdrop-blur-sm border border-gray-200" style={{ background: 'rgba(107, 123, 160, 0.1)' }}>
+          <div className="partner-board rounded-2xl p-8">
             <Slider {...settings}>
               {sponsors.map((image, index) => (
                 <div key={index} className="carousel-item">
-                  <div className="bg-white/90 rounded-lg p-4 mx-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <img src={image} alt={`Sponsor ${index + 1}`} className="max-h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300" />
+                  <div className="partner-tile rounded-lg p-4 mx-2 transition-all duration-300 hover:scale-105">
+                    <img
+                      src={image}
+                      alt={`Sponsor ${index + 1}`}
+                      className="max-h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                    />
                   </div>
                 </div>
               ))}
@@ -213,17 +199,17 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full flex flex-col p-6 sm:p-24 bg-white">
-          <div className="flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-12 sm:mt-24">
-            <div className="relative w-full sm:w-1/2 animate-fade-in-up">
-              <div className="text-4xl sm:text-7xl font-light text-gray-800">
-                <div className="w-full h-1 rounded-full mb-4" style={{ background: 'linear-gradient(90deg, #6B7BA0, #3A3A6B)' }}></div>
+        <section className="story-section w-full flex flex-col p-6 sm:p-20">
+          <div className="story-row fade-in flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-12 sm:mt-16">
+            <div className="relative w-full sm:w-1/2">
+              <div className="story-title text-4xl sm:text-7xl font-light">
+                <div className="story-rule w-full h-1 rounded-full mb-4"></div>
                 Empowering Data <br />
                 Driven Innovation
               </div>
             </div>
-            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0 animate-slide-in-right">
-              <div className="text-xl sm:text-3xl font-light text-gray-600 leading-relaxed">
+            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0">
+              <div className="story-copy text-xl sm:text-3xl font-light leading-relaxed">
                 Cornell Data Science (CDS) is an undergraduate project team
                 which builds data-driven solutions to a variety of real-world
                 problems. Our team of 92 students is a great place to meet
@@ -231,95 +217,92 @@ export default function Home() {
                 intersection of theory and application, and contribute to the
                 greater community initiatives.
               </div>
-              <div className="relative overflow-hidden rounded-2xl shadow-xl mt-8 sm:mt-16 group">
+              <div className="story-media relative overflow-hidden rounded-2xl mt-8 sm:mt-16 group">
                 <img
                   src={team1.src}
                   alt="Team"
                   className="w-full h-56 sm:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 story-media-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-24 sm:mt-48">
-            <div className="relative w-full sm:w-1/2 animate-slide-in-left">
-              <div className="text-4xl sm:text-7xl font-light text-gray-800">
-                <div className="w-full h-1 rounded-full mb-4" style={{ background: 'linear-gradient(90deg, #3A3A6B, #1A1A3A)' }}></div>
+
+          <div className="story-row fade-in flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-24 sm:mt-40">
+            <div className="relative w-full sm:w-1/2">
+              <div className="story-title text-4xl sm:text-7xl font-light">
+                <div className="story-rule w-full h-1 rounded-full mb-4"></div>
                 Driving Data Science Excellence
               </div>
             </div>
-            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0 animate-fade-in-up">
-              <div className="text-xl sm:text-3xl font-light text-gray-600 leading-relaxed">
+            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0">
+              <div className="story-copy text-xl sm:text-3xl font-light leading-relaxed">
                 We work on projects that span the spectrum of data science. From
                 applied deep learning to user-friendly visualizations, there is
                 likely someone on CDS working on it.
               </div>
-              <div className="relative overflow-hidden rounded-2xl shadow-xl mt-8 sm:mt-16 group">
+              <div className="story-media relative overflow-hidden rounded-2xl mt-8 sm:mt-16 group">
                 <img
                   src={lec.src}
                   alt="Lecture"
                   className="w-full h-56 sm:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 story-media-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-24 sm:mt-48">
-            <div className="relative w-full sm:w-1/2 animate-slide-in-right">
-              <div className="text-4xl sm:text-7xl font-light text-gray-800">
-                <div className="w-full h-1 rounded-full mb-4" style={{ background: 'linear-gradient(90deg, #1A1A3A, #6B7BA0)' }}></div>
+
+          <div className="story-row fade-in flex flex-col sm:flex-row items-start space-x-0 sm:space-x-12 mt-24 sm:mt-40">
+            <div className="relative w-full sm:w-1/2">
+              <div className="story-title text-4xl sm:text-7xl font-light">
+                <div className="story-rule w-full h-1 rounded-full mb-4"></div>
                 Showcasing <br />
                 Data Science Impact
               </div>
             </div>
-            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0 animate-fade-in-up">
-              <div className="text-xl sm:text-3xl font-light text-gray-600 leading-relaxed">
+            <div className="max-w-full sm:max-w-3xl mt-6 sm:mt-0">
+              <div className="story-copy text-xl sm:text-3xl font-light leading-relaxed">
                 We connect industry and passionate students together through our
                 focus on data science. Come to our networking events, company
                 talks, and mentoring sessions to learn more about careers in
                 data science.
               </div>
-              <div className="relative overflow-hidden rounded-2xl shadow-xl mt-8 sm:mt-16 group">
+              <div className="story-media relative overflow-hidden rounded-2xl mt-8 sm:mt-16 group">
                 <img
                   src={lec2.src}
                   alt="Lecture"
                   className="w-full h-56 sm:h-96 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 story-media-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Transition section from white to gradient */}
-        <section className="w-full h-48 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent"></div>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(107, 123, 160, 0.05) 25%, rgba(107, 123, 160, 0.15) 50%, rgba(107, 123, 160, 0.4) 75%, rgba(107, 123, 160, 0.8) 100%)' }}></div>
+        <section className="transition-band w-full h-48 relative overflow-hidden">
+          <div className="absolute inset-0"></div>
         </section>
 
-        <section className="w-full flex flex-col p-6 sm:p-24 pt-12 sm:pt-24 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6B7BA0 0%, #3A3A6B 35%, #1A1A3A 100%)' }}>
-          {/* Background decoration */}
+        <section className="subteam-section w-full flex flex-col p-6 sm:p-20 pt-12 sm:pt-20 text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-72 h-72 rounded-full blur-3xl" style={{ background: '#6B7BA0' }}></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full blur-3xl" style={{ background: '#3A3A6B' }}></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full blur-3xl" style={{ background: '#1A1A3A' }}></div>
+            <div className="absolute top-10 left-10 w-72 h-72 rounded-full blur-3xl subteam-orb-a"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full blur-3xl subteam-orb-b"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full blur-3xl subteam-orb-c"></div>
           </div>
 
           <div className="flex flex-col sm:flex-row w-full space-x-0 sm:space-x-12 h-full relative z-10">
-            <div className="w-full sm:w-1/3 animate-fade-in-up">
+            <div className="w-full sm:w-1/3 fade-in">
               <div className="text-4xl sm:text-6xl font-light text-white mb-8">
                 Driving innovation and excellence through specialized subteams.
               </div>
               <div className="mt-10 mb-12 sm:mb-10">
-                <Link href="/subteams">
-                  <button className="btn-primary text-xl px-12 py-4 hover:shadow-glow animate-pulse-glow">
-                    Learn More
-                  </button>
+                <Link href="/subteams" className="subteam-cta inline-flex items-center justify-center text-xl px-12 py-4">
+                  Learn More
                 </Link>
               </div>
             </div>
-            <ul className="list-none text-xl lg:text-5xl sm:text-3xl font-light flex-1 w-full max-w-7xl mx-auto animate-slide-in-right">
-              <li className="border-b border-t border-white/20 py-6 sm:py-12 pl-8 sm:pl-16 hover:text-purple-300 hover:pl-24 hover:bg-white/5 transition-all duration-500 rounded-lg group">
+            <ul className="subteam-list list-none text-xl lg:text-5xl sm:text-3xl font-light flex-1 w-full max-w-7xl mx-auto fade-in">
+              <li className="subteam-item border-b border-t py-6 sm:py-12 pl-8 sm:pl-16 transition-all duration-500 rounded-lg group">
                 <Link href="/subteam/machine-learning-engineering" className="flex items-center">
                   <span className="group-hover:scale-105 transition-transform duration-300">MACHINE LEARNING ENGINEERING</span>
                   <svg className="ml-4 w-8 h-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
@@ -327,7 +310,7 @@ export default function Home() {
                   </svg>
                 </Link>
               </li>
-              <li className="border-b border-white/20 py-6 sm:py-12 pl-8 sm:pl-16 hover:text-blue-300 hover:pl-24 hover:bg-white/5 transition-all duration-500 rounded-lg group">
+              <li className="subteam-item border-b py-6 sm:py-12 pl-8 sm:pl-16 transition-all duration-500 rounded-lg group">
                 <Link href="/subteam/data-engineering" className="flex items-center">
                   <span className="group-hover:scale-105 transition-transform duration-300">DATA ENGINEERING</span>
                   <svg className="ml-4 w-8 h-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
@@ -335,7 +318,7 @@ export default function Home() {
                   </svg>
                 </Link>
               </li>
-              <li className="border-b border-white/20 py-6 sm:py-12 pl-8 sm:pl-16 hover:text-green-300 hover:pl-24 hover:bg-white/5 transition-all duration-500 rounded-lg group">
+              <li className="subteam-item border-b py-6 sm:py-12 pl-8 sm:pl-16 transition-all duration-500 rounded-lg group">
                 <Link href="/subteam/quantitative-finance" className="flex items-center">
                   <span className="group-hover:scale-105 transition-transform duration-300">QUANTITATIVE FINANCE</span>
                   <svg className="ml-4 w-8 h-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
@@ -343,7 +326,7 @@ export default function Home() {
                   </svg>
                 </Link>
               </li>
-              <li className="border-b border-white/20 py-6 sm:py-12 pl-8 sm:pl-16 hover:text-yellow-300 hover:pl-24 hover:bg-white/5 transition-all duration-500 rounded-lg group">
+              <li className="subteam-item border-b py-6 sm:py-12 pl-8 sm:pl-16 transition-all duration-500 rounded-lg group">
                 <Link href="/subteam/data-science" className="flex items-center">
                   <span className="group-hover:scale-105 transition-transform duration-300">DATA SCIENCE</span>
                   <svg className="ml-4 w-8 h-8 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
@@ -354,11 +337,11 @@ export default function Home() {
             </ul>
           </div>
 
-          <div className="flex-col items-center mt-20 sm:mt-32 justify-center sm:flex h-screen relative z-10">
-            <div className="text-4xl sm:text-7xl font-light text-white text-center mb-8 animate-fade-in-up">
+          <div className="connect-section flex-col items-center mt-20 sm:mt-28 justify-center sm:flex h-screen relative z-10 fade-in">
+            <div className="text-4xl sm:text-7xl font-light text-white text-center mb-8">
               Connect and Learn
             </div>
-            <div className="flex justify-center items-center mt-8 mb-8 animate-pulse-glow">
+            <div className="flex justify-center items-center mt-8 mb-8">
               <img
                 src={coloredLogo.src}
                 alt="CDS Logo"
